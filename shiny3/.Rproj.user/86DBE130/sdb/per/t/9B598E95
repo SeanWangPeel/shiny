@@ -1,0 +1,16 @@
+{
+    "contents" : "\n# This is the server logic for a Shiny web application.\n# You can find out more about building applications with Shiny here:\n#\n# http://shiny.rstudio.com\n#\n\nlibrary(shiny)\n\nsource('helpers.R')\nlibrary(maps)\nlibrary(mapproj)\n\n\ncounties <- readRDS(\"data/counties.rds\")\n# percent_map(counties$white, \"darkgreen\", \"% white\")\n\nshinyServer(function(input, output){\n  output$plot1 <- renderPlot({\n    data = switch(input$var,\n           'Percent White' = counties$white,\n           'Percent Black' = counties$black,\n           'Percent Asian' = counties$asian,\n           'Percent Hispanic' = counties$hispanic\n           )\n    color = switch(input$var,\n            'Percent White' = 'darkgreen',\n            'Percent Black' = 'black',\n            'Percent Asian' = 'darkgoldenrod3',\n            'Percent Hispanic' = 'darkred')\n    legend <- switch(input$var, \n                     \"Percent White\" = \"% White\",\n                     \"Percent Black\" = \"% Black\",\n                     \"Percent Hispanic\" = \"% Hispanic\",\n                     \"Percent Asian\" = \"% Asian\")\n    percent_map(data, color, legend)\n#     percent_map(counties$white, color, \"% white\")\n  })\n})",
+    "created" : 1428359672546.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1066278838",
+    "id" : "9B598E95",
+    "lastKnownWriteTime" : 1428368651,
+    "path" : "~/Desktop/peel/shiny/shiny3/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

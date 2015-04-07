@@ -1,0 +1,16 @@
+{
+    "contents" : "# server.R\n\nlibrary(quantmod)\nsource(\"helpers.R\")\n\nshinyServer(function(input, output) {\n\n  dataInput <- reactive({\n    getSymbols(input$symb, src = \"yahoo\", \n               from = input$dates[1],\n               to = input$dates[2],\n               auto.assign = FALSE)\n  })\n  \n  output$plot <- renderPlot({    \n    chartSeries(dataInput(), theme = chartTheme(\"white\"), \n                type = \"line\", log.scale = input$log, TA = NULL)\n  })\n  \n})",
+    "created" : 1428384802710.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "579943603",
+    "id" : "4759AF7C",
+    "lastKnownWriteTime" : 1428386813,
+    "path" : "~/Desktop/peel/shiny/stockVis/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

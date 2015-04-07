@@ -1,0 +1,9 @@
+{
+    "path" : "~/Desktop/peel/shiny/stockvis",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}
